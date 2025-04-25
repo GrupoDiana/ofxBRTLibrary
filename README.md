@@ -49,5 +49,5 @@ git submodule update --init --recursive
 
 - First public release  
 - Initial support for BRT spatial audio rendering in OpenFrameworks  
-- iOS example rendering a dynamic white noise source at fixed azimuth  
+- Windows example rendering a dynamic white noise source at fixed azimuth  
 - Compatible with **BRT Library version 2.2.0 and later**
