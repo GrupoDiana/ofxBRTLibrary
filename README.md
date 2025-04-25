@@ -21,7 +21,9 @@ Please see `license.md` for full license details.
 
 ## Dependencies  
 - The **BRT Library** is included as a **git submodule** within this addon.  
-  Make sure to initialize submodules after cloning the repository:
+- In turn the **BRT library** includes the Eigen library with submodule. 
+- Make sure to initialize submodules after cloning the repository:
+  
 
 ```bash
 git submodule update --init --recursive
