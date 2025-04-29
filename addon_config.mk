@@ -15,8 +15,8 @@
 # and the PG will write to the console the kind of error and in which line it is
 
 meta:
-	ADDON_NAME = ofxBRT
-	ADDON_DESCRIPTION = BRT
+	ADDON_NAME = ofxBRTLibrary
+	ADDON_DESCRIPTION = BRT Library
 	ADDON_AUTHOR = @3DI-DIANA-UMA
 	ADDON_TAGS = "addon" "template"
 	ADDON_URL = http://github.com/yournamehere/ofxAddonTemplate
@@ -29,7 +29,11 @@ common:
 	# include search paths, this will be usually parsed from the file system
 	# but if the addon or addon libraries need special search paths they can be
 	# specified here separated by spaces or one per line using +=
-	# ADDON_INCLUDES =
+	ADDON_INCLUDES = src
+	ADDON_INCLUDES += libs/brt/include
+	ADDON_INCLUDES += libs/brt/include/third_party_libraries/libmysofa/include
+	ADDON_INCLUDES += libs/brt/include/third_party_libraries/eigen
+	ADDON_INCLUDES += libs/brt/include/third_party_libraries/boost_circular_buffer
 	
 	# any special flag that should be passed to the compiler when using this
 	# addon
@@ -41,7 +45,8 @@ common:
 	
 	# any special flag that should be passed to the linker when using this
 	# addon, also used for system libraries with -lname
-	# ADDON_LDFLAGS =
+	# ADDON_LDFLAGS = 
+	
 	
 	# source files, these will be usually parsed from the file system looking
 	# in the src folders in libs and the root of the addon. if your addon needs
@@ -91,6 +96,12 @@ vs:
 	# After compiling copy the following dynamic libraries to the executable directory
 	# only windows visual studio
 	# ADDON_DLLS_TO_COPY = 
+	ADDON_LDFLAGS_DEBUG = libs/brt/include/third_party_libraries/libmysofa/lib/vs/x64/Debug
+	ADDON_LDFLAGS_DEBUG += mysofa.lib
+	ADDON_LDFLAGS_DEBUG += zlibstaticd.lib
+	ADDON_LDFLAGS_RELEASE = libs/brt/include/third_party_libraries/libmysofa/lib/vs/x64/Release
+	ADDON_LDFLAGS_RELEASE += mysofa.lib
+	ADDON_LDFLAGS_RELEASE += zlibstatic.lib
 	
 linuxarmv6l:
 linuxarmv7l:
@@ -99,5 +110,7 @@ android/armeabi-v7a:
 osx:
 	# osx/iOS only, any framework that should be included in the project
 	# ADDON_FRAMEWORKS =
+	ADDON_LDFLAGS = libs/brt/include/third_party_libraries/libmysofa/lib/osx/universal
+	ADDON_LDFLAGS += libs/brt/include/third_party_libraries/libmysofa/lib/osx/universal/libmysofa.a
 ios:
 

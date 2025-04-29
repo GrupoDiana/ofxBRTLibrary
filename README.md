@@ -41,7 +41,7 @@ git submodule update --init --recursive
 
 ## Known Issues  
 
-- The addon requires manual setup of the development environment to ensure proper linking with the BRT static libraries. Follow the example project structure for guidance.
+- The addon_config.mk file has been created, however, in some versions of OF it seems that the project-generator generates a project that fails to compile the Eigen library, one of our dependencies. In any case, the attached example works and compiles correctly in visua studio 2022. We could also generate an example for OSX if anyone is interested.
 
 ## Version History  
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxBRT.h"
+#include "ofxBRTLibrary.h"
 
 
 #define SAMPLERATE 44100
