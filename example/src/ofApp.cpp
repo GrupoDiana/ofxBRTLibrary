@@ -7,7 +7,7 @@ void ofApp::setup(){
 	// Set up the sound stream
 	ofSoundStreamSettings settings;	
 	auto devices = soundStream.getDeviceList(ofSoundDevice::Api::MS_WASAPI);	
-	settings.setOutDevice(devices[2]);	// Select the output device
+	settings.setOutDevice(devices[1]);	// Select the output device
 	settings.setOutListener(this);
 	settings.sampleRate = SAMPLERATE;
 	settings.numOutputChannels = 2;
@@ -146,7 +146,7 @@ void ofApp::ConfigureBRT() {
 	// Listener Setup
 	listener = brtManager.CreateListener<BRTBase::CListener>(LISTENER_ID);	
 	// Listener Model Setup
-	std::shared_ptr<BRTListenerModel::CListenerHRTFModel> listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerHRTFModel>(LISTENER_HRTF_MODEL_ID);	
+	std::shared_ptr<BRTListenerModel::CListenerDirectHRTFConvolutionModel> listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerDirectHRTFConvolutionModel>(LISTENER_HRTF_MODEL_ID);	
 	bool control = listener->ConnectListenerModel(listenerModel);
 	if (!control) {
 		std::cout << "Error connecting listener model" << std::endl;
@@ -237,9 +237,9 @@ bool ofApp::LoadNearFieldSOSFilter(std::string _ildFilePath, std::shared_ptr<BRT
 }
 
 
-std::shared_ptr<BRTSourceModel::CSourceSimpleModel> ofApp::CreateSimpleSoundSource(std::string _soundSourceID) {
+std::shared_ptr<BRTSourceModel::CSourceOmnidirectionalModel> ofApp::CreateSimpleSoundSource(std::string _soundSourceID) {
 	brtManager.BeginSetup();
-	std::shared_ptr<BRTSourceModel::CSourceSimpleModel> _brtSoundSource = brtManager.CreateSoundSource<BRTSourceModel::CSourceSimpleModel>(_soundSourceID);
+	std::shared_ptr<BRTSourceModel::CSourceOmnidirectionalModel> _brtSoundSource = brtManager.CreateSoundSource<BRTSourceModel::CSourceOmnidirectionalModel>(_soundSourceID);
 	brtManager.EndSetup();
 	if (_brtSoundSource == nullptr) {
 		std::cout << "Error creating sound source" << std::endl;

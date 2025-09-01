@@ -44,7 +44,7 @@ class ofApp : public ofBaseApp{
 		void LoadBRTResources(const std::string & listenerID);
 		bool LoadHRTFSofaFile(const std::string & _filePath, std::shared_ptr<BRTServices::CHRTF> hrtf);
 		bool LoadNearFieldSOSFilter(std::string _ildFilePath, std::shared_ptr<BRTServices::CSOSFilters> _sosFilter);
-		std::shared_ptr<BRTSourceModel::CSourceSimpleModel> CreateSimpleSoundSource(std::string _soundSourceID);
+		std::shared_ptr<BRTSourceModel::CSourceOmnidirectionalModel> CreateSimpleSoundSource(std::string _soundSourceID);
 		void ConnectSoundSource(const std::string & _soundSourceID);
 
 		////////////////
@@ -56,6 +56,6 @@ class ofApp : public ofBaseApp{
 		Common::CGlobalParameters globalParameters; // Class where the global BRT parameters are defined.
 		BRTBase::CBRTManager brtManager; // BRT global manager interface
 		std::shared_ptr<BRTBase::CListener> listener; // Pointer to listener model
-		std::shared_ptr<BRTSourceModel::CSourceSimpleModel> source1BRT; // Pointers to each audio source model
+		std::shared_ptr<BRTSourceModel::CSourceOmnidirectionalModel> source1BRT; // Pointers to each audio source model
 		
 };
